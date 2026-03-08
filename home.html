@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github-Issue-Tracker</title>
 
+
+    <!-- github icon  -->
+    <link rel="icon" href="./assets/github-logo.png" type="image/png">
+
     <!-- daisy ui and  -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -128,9 +132,26 @@
         <main id="all-cards" class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-4">
 
         </main>
-       
-        
+
+
     </main>
+    <button onclick=""></button>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+
+            <div id="modal-container"></div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn bg-[#4A00FF] text-white">Close</button>
+                </form>
+            </div>
+
+        </div>
+    </dialog>
 
 
 

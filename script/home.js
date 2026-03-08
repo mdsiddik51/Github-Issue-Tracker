@@ -19,6 +19,85 @@ const clickButton = (id) => {
 }
 
 
+
+const lodedetels = async (id) => {
+    const Url = ` https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+    const responce = await fetch(Url);
+    const details = await responce.json();
+    displayDetails(details.data);
+}
+
+
+
+
+/**
+ * 
+ * {
+    "id": 1,
+    "title": "Fix navigation menu on mobile devices",
+    "description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
+    "status": "open",
+    "labels": [
+        "bug",
+        "help wanted"
+    ],
+    "priority": "high",
+    "author": "john_doe",
+    "assignee": "jane_smith",
+    "createdAt": "2024-01-15T10:30:00Z",
+    "updatedAt": "2024-01-15T10:30:00Z"
+}
+ */
+const displayDetails = (card) => {
+    const modal = document.getElementById('modal-container');
+        console.log(card);
+    modal.innerHTML = `
+        <div class="p-4">
+
+            <h1 class="font-bold text-2xl">${card.title}</h1>
+
+            <div class="flex pt-2 gap-3 items-center text-[#64748B]">
+
+                <span class="py-1 px-2 bg-[#00A96E] text-white rounded-full">${card.status}</span>
+
+                <small>• Opened by ${card.assignee}</small>
+                <small>• ${card.updatedAt.split("T")[0]}</small>
+
+            </div>
+
+            <div class="mt-6 flex gap-2">
+                <span class="bg-[#EF444470] px-3 py-1 rounded-full text-[#EF4444]">
+                    <i class="fa-brands fa-android"></i> ${card.labels[0]}</span>
+
+                <span class="px-3 py-1 bg-[#FDE68A70] text-[#D97706] rounded-full">
+                    <i class="fa-solid fa-circle-radiation"></i>${card.labels[1]}</span>
+            </div>
+
+            <div class="mt-4">
+                <p class="text-[#64748B]">${card.description}</p>
+            </div>
+
+            <div class="flex justify-between p-3 mt-6 bg-[#F8FAFC] shadow-md rounded-md">
+                
+                <div class="grid grid-cols-1 space-y-2">
+                    <span class="text-[#64748B]">Assignee:</span>
+                    <span class="font-bold">${card.assignee}</span>
+                </div>
+
+                <div class="grid grid-cols-1 space-y-2">
+                    <span class="text-[#64748B]">Priority:</span>
+                    <span class="py-1 px-3 text-white bg-[#EF4444] rounded-full">${card.priority}</span>
+                </div>
+
+            </div>
+
+        </div>
+    `;
+
+    document.getElementById('my_modal_5').showModal();
+}
+
+
 //   all api 
 
 const allApi = () => {
@@ -51,6 +130,7 @@ const displayIssye = (issues) => {
 }
 } */
 
+    //onclick="my_modal_5.showModal()"
     issues.forEach(element => {
         console.log(element);
         // creat a dive 
@@ -60,7 +140,7 @@ const displayIssye = (issues) => {
 
         creatCard.innerHTML = `
             <section class="bg-[#FFFFFF] shadow-md rounded-md h-full">
-                <article class=" border-t-6 rounded-3xl border-t-green-500 space-y-4 ">
+                <article class=" border-t-6 rounded-3xl ${element.priority === 'high' || element.priority === 'medium' ? "border-t-green-500" :"border-t-[#A855F7]"} space-y-4 ">
 
                     <article class="p-4 space-y-4">
                         <!-- header status and buton -->
@@ -69,7 +149,7 @@ const displayIssye = (issues) => {
                                 <img src="./assets/Open-Status.png" alt="">
                                 <img class="hidden" src="./assets/Closed- Status .png" alt="">
                             </div>
-                            <button class="bg-[#EF444470] text-[#EF4444] px-6 rounded-full">${element.priority}</button>
+                            <button onclick="lodedetels(${element.id})"  class="${element.priority === "high" ? "bg-[#EF444470] text-[#EF4444]" : element.priority === "medium" ? "bg-[#FDE68A70] text-[#D97706]": "bg-[#E5E7EB] text-[#374151]"} px-6 rounded-full">${element.priority}</button>
                         </div>
 
 
@@ -80,8 +160,7 @@ const displayIssye = (issues) => {
                             <div class="mt-6">
                                 <span class="bg-[#EF444470] px-1 py-1 rounded-full text-[#EF4444] text-center"><i
                                         class="fa-brands fa-android"></i>${element.labels[0]}</span>
-                                <span class="px-1 py-1 bg-[#FDE68A70] text-[#D97706] rounded-full"><i
-                                        class="fa-solid fa-circle-radiation"></i>${element.labels[1]}</span>
+                                ${element.labels[1] !== undefined ? `<span class="px-1 py-1 bg-[#FDE68A70] text-[#D97706] rounded-full"><i class="fa-solid fa-circle-radiation"></i> ${element.labels[1]}</span>` : ""}
                             </div>
                         </div>
 
