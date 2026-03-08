@@ -1,11 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github-Issue-Tracker</title>
+
+    <!-- daisy ui and  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+
+    <!-- font awesome  cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- font family -->
+
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+
 </head>
+
 <body>
-    <h1>Hello world</h1>
+
+    <header class="bg-white w-full">
+        <div class="navbar bg-base-100 shadow-sm flex flex-col sm:flex-row gap-3 sm:gap-0">
+
+          
+            <div class="flex-1 flex items-center gap-2">
+
+                <img src="./assets/github-logo.png" class="w-9 h-9">
+
+               
+                <p class="font-bold text-lg sm:text-xl">
+                    GitHub Issues Tracker
+                </p>
+
+            </div>
+
+          
+            <div class="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center w-full sm:w-auto">
+
+                <!-- input button -->
+                <label class="input w-full sm:w-auto">
+                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                            stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </g>
+                    </svg>
+                    <input type="search" required placeholder="Search" class="w-full" />
+                </label>
+
+                <!-- search button-->
+                <button class="btn text-white bg-[#4A00FF] w-full sm:w-auto">
+                    <i class="fas fa-plus"></i> New Issue
+                </button>
+
+            </div>
+
+        </div>
+    </header>
+
+
+
+    <!-- button Section -->
+
+    <section class="w-11/12 mx-auto mt-15 shadow-gray-400 rounded-md shadow-md p-6 bg-white">
+        <article id="contron-btn">
+            <button id="all-button" onclick="clickButton('all-button')"
+                class="btn all-btn px-6 btn-outline bg-[#4A00FF] hover:text-white ">All</button>
+            <button id="open-button" onclick="clickButton('open-button')"
+                class="btn open-btn btn-outline hover:bg-blue-600 hover:text-white">Open</button>
+            <button id="closed-button" onclick="clickButton('closed-button')"
+                class="btn closed-btn btn-outline hover:bg-blue-600 hover:text-white">Closed</button>
+        </article>
+    </section>
+
+
+    <!-- main container -->
+
+    <main class="w-11/12 mx-auto mt-6">
+        <section class="shadow-gray-400  shadow-md bg-white p-6 rounded-t-lg ">
+            <div class="flex items-center justify-between">
+                <div class="flex gap-2">
+                    <div class="flex items-center">
+                        <img width="50px" src="./assets/Aperture.png">
+                    </div>
+                    <div>
+                        <h1 class="font-semibold text-xl"><span>50 </span>Issues</h1>
+                        <p class="text-[#64748B]">Track and manage your project issues</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-center">
+                    <h1 class="flex items-center gap-1 text-[16px] font-medium">
+                        <span class="h-3 w-3 rounded-full bg-[#00A96E] inline-block"></span>
+                        Open
+                    </h1>
+                    <h1 class="flex items-center gap-1 text-[16px] font-medium">
+                        <span class="h-3 w-3 rounded-full bg-[#A855F7] inline-block"></span>
+                        Closed
+                    </h1>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+
+    <main class="w-11/12 mx-auto">
+        <!-- all cards  -->
+        <section class="bg-white shadow-md mt-1 rounded-md">
+            <h1>hello</h1>
+        </section>
+
+
+    </main>
+
+
+
+
+    <!-- Java Script -->
+    <script src="./script/home.js"></script>
 </body>
+
 </html>
