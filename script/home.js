@@ -50,7 +50,6 @@ const lodedetels = async (id) => {
  */
 const displayDetails = (card) => {
     const modal = document.getElementById('modal-container');
-        console.log(card);
     modal.innerHTML = `
         <div class="p-4">
 
@@ -132,8 +131,8 @@ const displayIssye = (issues) => {
 
     //onclick="my_modal_5.showModal()"
     issues.forEach(element => {
-        console.log(element);
-        // creat a dive 
+       
+        // creat a div 
 
         const creatCard = document.createElement('div');
 
@@ -158,9 +157,9 @@ const displayIssye = (issues) => {
                             <h1 class="font-semibold">${element.title}</h1>
                             <p class="text-[#64748B]">${element.description}</p>
                             <div class="mt-6">
-                                <span class="bg-[#EF444470] px-1 py-1 rounded-full text-[#EF4444] text-center"><i
+                                <span class="bg-[#EF444470] text-[12px] px-3 py-1 rounded-full text-[#EF4444] text-center"><i
                                         class="fa-brands fa-android"></i>${element.labels[0]}</span>
-                                ${element.labels[1] !== undefined ? `<span class="px-1 py-1 bg-[#FDE68A70] text-[#D97706] rounded-full"><i class="fa-solid fa-circle-radiation"></i> ${element.labels[1]}</span>` : ""}
+                                ${element.labels[1] !== undefined ? `<span class="px-3 py-1 text-[12px] bg-[#FDE68A70] text-[#D97706] rounded-full"><i class="fa-solid fa-circle-radiation"></i> ${element.labels[1]}</span>` : ""}
                             </div>
                         </div>
 
@@ -197,4 +196,25 @@ const displayIssye = (issues) => {
 
 }
 
+
 allApi();
+
+document.getElementById("search-btn").addEventListener("click", () => {
+    const input = document.getElementById("input-search");
+    const searchValue = input.value.trim().toLowerCase();
+
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const issues = data.data;
+
+            const filteredIssues = issues.filter(issue => 
+                issue.title.toLowerCase().includes(searchValue) ||
+                issue.description.toLowerCase().includes(searchValue)
+            );
+
+            displayIssye(filteredIssues);
+        });
+});
