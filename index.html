@@ -1,11 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github-Issue-Tracker</title>
+
+
+    <!-- daisy ui and  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+
 </head>
-<body>
-    
+
+<body class="min-h-screen flex items-center justify-center">
+
+
+    <!-- form  -->
+
+    <form action="" class="bg-white shadow-md rounded-xl w-full max-w-md px-8">
+
+        <!-- form header and img  -->
+
+
+        <div class="grid place-items-center grid-cols-1 space-y-2 mb-6">
+            <img src="./assets/github-logo.png" alt="">
+            <h1 class="font-bold text-2xl text-[#1F2937]">GitHub Issues Tracker</h1>
+            <p class="text-[#64748B]">Sign in to manage your issues</p>
+        </div>
+        <div class="py-4">
+
+
+            <!-- input Username div -->
+
+            <div class="grid grid-cols-1 py-4">
+                <label class="font-bold" for="Username">Username</label>
+                <input class="px-4 py-2 rounded-lg" type="text" placeholder="Enter Username" id="Username">
+                <p class="text-[#4A00FF]">Default: admin</p>
+            </div>
+
+
+            <!-- input Password div -->
+
+            <div class="grid grid-cols-1">
+                <label for="Password">Password</label>
+                <input class="px-4 py-2 rounded-lg" type="password" placeholder="Enter Password" id="Password">
+                <p class="text-[#4A00FF]">Default: admin123</p>
+            </div>
+
+        </div>
+
+
+        <!-- Sing In button -->
+
+        <button class="bg-[#4A00FF] w-full py-2 rounded-[8px] text-white font-semibold]">Sign In</button>
+
+
+        <!-- horizontal var  -->
+
+        <div class=" relative">
+            <div class="relative my-6">
+                <hr class="border-gray-300">
+                <span class="absolute left-1/2 -translate-x-1/2 -top-3 bg-white px-3 text-gray-500">
+                    OR
+                </span>
+            </div>
+        </div>
+
+        <!-- Demo credentials -->
+
+        <div class="text-center pb-6">
+            <p class="text-[#64748B] mb-6">Demo Credentials:</p>
+            <p><span class="font-bold">Username:</span> admin</p>
+            <p><span class="font-bold">Password: </span>admin123</p>
+        </div>
+
+    </form>
+
+
+
 </body>
+
 </html>
