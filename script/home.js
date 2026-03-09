@@ -82,7 +82,7 @@ const displayDetails = (card) => {
 
             <div class="flex text-center pt-2 gap-3 items-center text-[#64748B]">
 
-                <span class="py-1 px-4  ${card.status === 'open'?" bg-[#00A96E] text-white" : "bg-[#A855F7] text-black " } rounded-full">${card.status}</span>
+                <span class="py-1 px-4  ${card.status === 'open'?" bg-[#00A96E] text-white" : "bg-[#A855F7] text-white " } rounded-full">${card.status}</span>
 
                 <small>• Opened by ${card.assignee}</small>
                 <small>• ${card.updatedAt.split("T")[0]}</small>
