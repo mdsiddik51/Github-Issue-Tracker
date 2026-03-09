@@ -27,10 +27,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-    <!-- font family  with univarsel selector -->
+    <!-- font family  on body -->
 
     <style>
-        * {
+        body {
             font-family: "Geist", sans-serif;
         }
     </style>
@@ -66,7 +66,8 @@
                 </label>
 
                 <!-- search button-->
-                <button id="search-btn" class="btn text-white bg-[#4A00FF] w-full sm:w-auto">
+                <button id="search-btn"
+                    class="btn hover:bg-white hover:text-black transition duration-400 text-white bg-[#4A00FF] w-full sm:w-auto">
                     <i class="fas fa-plus"></i> New Issue
                 </button>
             </div>
@@ -84,11 +85,11 @@
     <section class="w-11/12 mx-auto mt-15 shadow-gray-400 rounded-md shadow-md p-6 bg-white">
         <article id="contron-btn">
             <button id="all-button" onclick="clickButton('all-button')"
-                class="btn all-btn px-6 btn-outline hover:bg-[#4A00FF]  hover:text-white ">All</button>
+                class="btn all-btn px-6 btn-outline transition duration-400 hover:bg-[#4A00FF]  hover:text-white ">All</button>
             <button id="open-button" onclick="clickButton('open-button')"
-                class="btn open-btn btn-outline   hover:bg-blue-600 hover:text-white">Open</button>
+                class="btn open-btn btn-outline  transition duration-400 hover:bg-blue-600 hover:text-white">Open</button>
             <button id="closed-button" onclick="clickButton('closed-button')"
-                class="btn closed-btn btn-outline   hover:bg-blue-600 hover:text-white">Closed</button>
+                class="btn closed-btn btn-outline transition duration-400  hover:bg-blue-600 hover:text-white">Closed</button>
         </article>
     </section>
 
@@ -164,7 +165,8 @@
 
             <div class="modal-action">
                 <form method="dialog">
-                    <button class="btn bg-[#4A00FF] text-white">Close</button>
+                    <button
+                        class="btn outline-none hover:bg-white hover:text-black bg-[#4A00FF] text-white">Close</button>
                 </form>
             </div>
 

@@ -90,9 +90,8 @@ const displayDetails = (card) => {
             </div>
 
             <div class="mt-6">
-                                <span class="bg-[#EF444470] border-2 border-[#EF444470] text-[12px] px-3 py-1 rounded-full text-[#EF4444] text-center"><i
-                                        class="fa-brands fa-android"></i>${card.labels[0]}</span>
-                                ${card.labels[1] !== undefined ? `<span class="px-3 py-1 text-[12px] bg-[#FDE68A70] border-2 border-[#FDE68A70] text-[#D97706] rounded-full"><i class="fa-solid fa-circle-radiation"></i> ${card.labels[1]}</span>` : ""}
+                                <span class=" text-[12px] px-3 py-1 rounded-full ${card.labels[0] === 'enhancement'? "bg-[#00A96E60] border-2 border-[#00A96E] text-[#00A96E]" :"bg-[#EF444470] border-2 border-[#EF444470] text-[#EF4444]"} text-center"> ${card.labels[0] === 'bug'? `<i class="fa-brands fa-android"></i> `: `<i class="fa-regular fa-star"></i>` } ${card.labels[0].toUpperCase()}</span>
+                                ${card.labels[1] !== undefined ? `<span class="px-3 py-1 text-[12px] bg-[#FDE68A70] border-2 border-[#FDE68A70] text-[#D97706] rounded-full"><i class="fa-solid fa-circle-radiation"></i> ${card.labels[1].toUpperCase()}</span>` : ""}
                 </div>
 
             <div class="mt-4">
@@ -103,12 +102,12 @@ const displayDetails = (card) => {
                 
                 <div class="grid grid-cols-1 space-y-2">
                     <span class="text-[#64748B]">Assignee:</span>
-                    <span class="font-bold">${card.assignee === ""? "NoName": card.assignee}</span>
+                    <span class="font-bold">${card.assignee === ""? "No Name Found": card.assignee}</span>
                 </div>
 
                 <div class="grid grid-cols-1 space-y-2">
                     <span class="text-[#64748B]">Priority:</span>
-                    <span class="py-1 px-3 t ${card.priority === "high" ? "bg-[#EF444470] text-[#EF4444]" : card.priority === "medium" ? "bg-[#FDE68A70] text-[#D97706]": "bg-[#E5E7EB] text-[#374151]"} rounded-full">${card.priority}</span>
+                    <span class="py-1 px-4 t ${card.priority === "high" ? "bg-[#EF4444] text-white" : card.priority === "medium" ? "bg-[#FDE68A70] text-yellow-500": "bg-[#E5E7EB] text-black"} rounded-full">${card.priority}</span>
                 </div>
 
             </div>
@@ -138,7 +137,7 @@ const displayIssye = (issues) => {
         const creatCard = document.createElement('div');
 
         creatCard.innerHTML = `
-            <section onclick="lodedetels(${element.id})"  class="bg-[#FFFFFF] shadow-md rounded-md h-full">
+            <section onclick="lodedetels(${element.id})"  class=" hover:scale-105 transition duration-400 bg-[#FFFFFF] shadow-md rounded-md h-full">
                 <article  class=" border-t-6 rounded-3xl ${element.status === 'open'? "border-t-green-500" :"border-t-[#A855F7]"} space-y-4 ">
 
                     <article class="p-4 space-y-4">
@@ -156,10 +155,9 @@ const displayIssye = (issues) => {
                         <div class="pt-3 space-y-4">
                             <h1 class="font-semibold">${element.title}</h1>
                             <p class="text-[#64748B]">${element.description}</p>
-                            <div class="mt-6">
-                                <span class="bg-[#EF444470] border-2 border-[#EF444470] text-[12px] px-3 py-1 rounded-full text-[#EF4444] text-center"><i
-                                        class="fa-brands fa-android"></i>${element.labels[0]}</span>
-                                ${element.labels[1] !== undefined ? `<span class="px-3 py-1 text-[12px] bg-[#FDE68A70] border-2 border-[#FDE68A70] text-[#D97706] rounded-full"><i class="fa-solid fa-circle-radiation"></i> ${element.labels[1]}</span>` : ""}
+                            <div class="mt-6 space-x-2">
+                                <span class=" ${element.labels[0] === 'enhancement'? "bg-[#00A96E60] border-2 border-[#00A96E] text-[#00A96E]" :"bg-[#EF444470] border-2 border-[#EF444470] text-[#EF4444] "} text-[10px] px-3 py-1 rounded-full text-center"> ${element.labels[0] === 'bug'? `<i class="fa-brands fa-android"></i> `: `<i class="fa-regular fa-star"></i>` }  ${element.labels[0].toUpperCase()} </span>
+                                ${element.labels[1] !== undefined ? `<span class="px-3 py-1 text-[10px] bg-[#FDE68A70] border-2 border-[#FDE68A70] text-[#D97706] rounded-full"> <i class="fa-solid fa-circle-radiation"></i> ${element.labels[1].toUpperCase()} </span>` : ""}
                             </div>
                         </div>
 
@@ -226,5 +224,7 @@ document.getElementById("search-btn").addEventListener("click", () => {
 
             displayIssye(filteredIssues);
             spinner(false);
+            input.value = "";
         });
+       
 });
