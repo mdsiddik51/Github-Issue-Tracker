@@ -91,7 +91,7 @@ const displayDetails = (card) => {
 
             <div class="mt-6">
                                 <span class=" text-[12px] px-3 py-1 rounded-full ${card.labels[0] === 'enhancement'? "bg-[#00A96E60] border-2 border-[#00A96E] text-[#00A96E]" :"bg-[#EF444470] border-2 border-[#EF444470] text-[#EF4444]"} text-center"> ${card.labels[0] === 'bug'? `<i class="fa-brands fa-android"></i> `: `<i class="fa-regular fa-star"></i>` } ${card.labels[0].toUpperCase()}</span>
-                                ${card.labels[1] !== undefined ? `<span class="px-3 py-1 text-[12px] bg-[#FDE68A70] border-2 border-[#FDE68A70] text-[#D97706] rounded-full"><i class="fa-solid fa-circle-radiation"></i> ${card.labels[1].toUpperCase()}</span>` : ""}
+                                ${card.labels[1] !== undefined ? `<span class="px-3 py-1 text-[12px] ${card.labels[1] === 'enhancement'? "bg-[#00A96E60] border-2 border-[#00A96E] text-[#00A96E]" :"bg-[#FDE68A70] border-2 border-[#FDE68A70] text-[#D97706]"}  rounded-full">${card.labels[1] === 'enhancement'? `<i class="fa-regular fa-star"></i> `: `<i class="fa-solid fa-circle-radiation"></i> `} ${card.labels[1].toUpperCase()}</span>` : ""}
                 </div>
 
             <div class="mt-4">
@@ -157,7 +157,7 @@ const displayIssye = (issues) => {
                             <p class="text-[#64748B]">${element.description}</p>
                             <div class="mt-6 space-x-2">
                                 <span class=" ${element.labels[0] === 'enhancement'? "bg-[#00A96E60] border-2 border-[#00A96E] text-[#00A96E]" :"bg-[#EF444470] border-2 border-[#EF444470] text-[#EF4444] "} text-[10px] px-3 py-1 rounded-full text-center"> ${element.labels[0] === 'bug'? `<i class="fa-brands fa-android"></i> `: `<i class="fa-regular fa-star"></i>` }  ${element.labels[0].toUpperCase()} </span>
-                                ${element.labels[1] !== undefined ? `<span class="px-3 py-1 text-[10px] bg-[#FDE68A70] border-2 border-[#FDE68A70] text-[#D97706] rounded-full"> <i class="fa-solid fa-circle-radiation"></i> ${element.labels[1].toUpperCase()} </span>` : ""}
+                                ${element.labels[1] !== undefined ? `<span class="px-3 py-1 text-[10px] ${element.labels[1] === 'enhancement'? "bg-[#00A96E60] border-2 border-[#00A96E] text-[#00A96E]" :"bg-[#FDE68A70] border-2 border-[#FDE68A70] text-[#D97706]"} rounded-full"> ${element.labels[1] === 'enhancement'? `<i class="fa-regular fa-star"></i> `: `<i class="fa-solid fa-circle-radiation"></i> `} ${element.labels[1].toUpperCase()} </span>` : ""}
                             </div>
                         </div>
 
