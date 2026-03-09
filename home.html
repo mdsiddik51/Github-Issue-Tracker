@@ -27,33 +27,29 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-    <!-- font family -->
+    <!-- font family  with univarsel selector -->
 
     <style>
         * {
             font-family: "Geist", sans-serif;
         }
     </style>
-
 </head>
 
 <body>
 
+    <!-- navbar stard  -->
+
     <header class="bg-white w-full">
         <div class="navbar bg-base-100 shadow-sm flex flex-col sm:flex-row gap-3 sm:gap-0">
 
-
+            <!-- navbar img and tital  -->
             <div class="flex-1 flex items-center gap-2">
-
                 <img src="./assets/github-logo.png" class="w-9 h-9">
-
-
                 <p class="font-bold text-lg sm:text-xl">
                     GitHub Issues Tracker
                 </p>
-
             </div>
-
 
             <div class="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center w-full sm:w-auto">
 
@@ -73,7 +69,6 @@
                 <button id="search-btn" class="btn text-white bg-[#4A00FF] w-full sm:w-auto">
                     <i class="fas fa-plus"></i> New Issue
                 </button>
-
             </div>
 
         </div>
@@ -81,16 +76,19 @@
 
 
 
-    <!-- button Section -->
+
+
+
+    <!-- button Section     button tabs -->
 
     <section class="w-11/12 mx-auto mt-15 shadow-gray-400 rounded-md shadow-md p-6 bg-white">
         <article id="contron-btn">
             <button id="all-button" onclick="clickButton('all-button')"
-                class="btn all-btn px-6 btn-outline bg-[#4A00FF] text-white ">All</button>
+                class="btn all-btn px-6 btn-outline hover:bg-[#4A00FF]  hover:text-white ">All</button>
             <button id="open-button" onclick="clickButton('open-button')"
-                class="btn open-btn btn-outline hover:bg-blue-600 hover:text-white">Open</button>
+                class="btn open-btn btn-outline   hover:bg-blue-600 hover:text-white">Open</button>
             <button id="closed-button" onclick="clickButton('closed-button')"
-                class="btn closed-btn btn-outline hover:bg-blue-600 hover:text-white">Closed</button>
+                class="btn closed-btn btn-outline   hover:bg-blue-600 hover:text-white">Closed</button>
         </article>
     </section>
 
@@ -100,15 +98,19 @@
     <main class="w-11/12 mx-auto mt-6">
         <section class="shadow-gray-400  shadow-md bg-white p-6 rounded-t-lg ">
             <div class="flex items-center justify-between">
+
+                <!-- card child count ond img -->
                 <div class="flex gap-2">
                     <div class="flex items-center">
                         <img width="50px" src="./assets/Aperture.png">
                     </div>
                     <div>
-                        <h1 class="font-semibold text-xl"><span>50 </span>Issues</h1>
+                        <h1 class="font-semibold text-xl"><span id="status-counter"> </span> Issues</h1>
                         <p class="text-[#64748B]">Track and manage your project issues</p>
                     </div>
                 </div>
+
+                <!-- card open and close color -->
                 <div class="flex gap-4 items-center">
                     <h1 class="flex items-center gap-1 text-[16px] font-medium">
                         <span class="h-3 w-3 rounded-full bg-[#00A96E] inline-block"></span>
@@ -120,25 +122,38 @@
                     </h1>
                 </div>
             </div>
+
         </section>
-
-
     </main>
+
+
+
+
+
+    <!-- card container stard -->
 
 
     <main class="w-11/12 mx-auto p-6 shadow-md ">
+
         <!-- all cards  -->
+        <main id="all-cards" class="hidden grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-4"> </main>
 
-        <main id="all-cards" class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Open Cards  -->
+        <main id="open-cards" class="grid hidden grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-4"> </main>
 
-        </main>
-
+        <!-- closed cards -->
+        <main id="closed-card" class="grid grid-cols-1 hidden  md:grid-cols-2 lg:grid-cols-4 gap-4"></main>
 
     </main>
-    <button onclick=""></button>
+
+
+
+
+
 
     <!-- Open the modal using ID.showModal() method -->
-    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+
+
     <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
         <div class="modal-box">
 
@@ -152,6 +167,8 @@
 
         </div>
     </dialog>
+
+
 
 
 

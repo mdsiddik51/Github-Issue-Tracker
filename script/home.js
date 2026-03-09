@@ -1,22 +1,55 @@
+let curentTab = 'all-button';
+const tabAcrive = ["bg-[#4A00FF]", "text-white"];
+const tabinActive = ["bg-transparent", "text-black"];
+
+
+//all card contaner
+const cardContainer = document.getElementById('all-cards');
+const openContainer = document.getElementById('open-cards');
+const closedContainer = document.getElementById('closed-card');
+
+// status update 
+
+const allstatus = document.getElementById('status-counter');
+
+
 
 const clickButton = (id) => {
-
-    const allButtonTabs = ["all-button", "open-button", "closed-button"];
-
-    for (const tab of allButtonTabs) {
-
-        const button = document.getElementById(tab);
-
-        if (tab === id) {
-            button.classList.add("bg-[#4A00FF]", "text-white");
-            allApi();
+    const tabs = ["all-button", "open-button", "closed-button"];
+    for(const tab of tabs ){
+        const tabid = document.getElementById(tab);
+        if(tab === id){
+            tabid.classList.remove(...tabinActive);
+            tabid.classList.add(...tabAcrive);
         }
-        else {
-            button.classList.remove("bg-[#4A00FF]", "text-white");
+        else{
+            tabid.classList.remove(...tabAcrive)
+            tabid.classList.add(...tabinActive);
         }
+    }
 
+    const mainTag = [cardContainer, openContainer, closedContainer];
+
+    for(const main of mainTag){
+        main.classList.add('hidden');
+    }
+    if(id === 'all-button'){
+        cardContainer.classList.remove('hidden');
+        allstatus.innerText = cardContainer.children.length;
+        
+    }
+    else if (id === 'open-button'){
+        openContainer.classList.remove("hidden");
+        allstatus.innerText = openContainer.children.length;
+    }
+    else{
+        closedContainer.classList.remove("hidden");
+        allstatus.innerText = closedContainer.children.length;
     }
 }
+
+
+clickButton(curentTab);
 
 
 
@@ -28,26 +61,6 @@ const lodedetels = async (id) => {
 }
 
 
-
-
-/**
- * 
- * {
-    "id": 1,
-    "title": "Fix navigation menu on mobile devices",
-    "description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
-    "status": "open",
-    "labels": [
-        "bug",
-        "help wanted"
-    ],
-    "priority": "high",
-    "author": "john_doe",
-    "assignee": "jane_smith",
-    "createdAt": "2024-01-15T10:30:00Z",
-    "updatedAt": "2024-01-15T10:30:00Z"
-}
- */
 const displayDetails = (card) => {
     const modal = document.getElementById('modal-container');
     modal.innerHTML = `
@@ -64,13 +77,11 @@ const displayDetails = (card) => {
 
             </div>
 
-            <div class="mt-6 flex gap-2">
-                <span class="bg-[#EF444470] px-3 py-1 rounded-full text-[#EF4444]">
-                    <i class="fa-brands fa-android"></i> ${card.labels[0]}</span>
-
-                <span class="px-3 py-1 bg-[#FDE68A70] text-[#D97706] rounded-full">
-                    <i class="fa-solid fa-circle-radiation"></i>${card.labels[1]}</span>
-            </div>
+            <div class="mt-6">
+                                <span class="bg-[#EF444470] text-[12px] px-3 py-1 rounded-full text-[#EF4444] text-center"><i
+                                        class="fa-brands fa-android"></i>${card.labels[0]}</span>
+                                ${card.labels[1] !== undefined ? `<span class="px-3 py-1 text-[12px] bg-[#FDE68A70] text-[#D97706] rounded-full"><i class="fa-solid fa-circle-radiation"></i> ${card.labels[1]}</span>` : ""}
+                </div>
 
             <div class="mt-4">
                 <p class="text-[#64748B]">${card.description}</p>
@@ -111,42 +122,24 @@ const displayIssye = (issues) => {
     allCard.innerHTML = "";
 
 
-    /**{
-   {
-    "id": 1,
-    "title": "Fix navigation menu on mobile devices",
-    "description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
-    "status": "open",
-    "labels": [
-        "bug",
-        "help wanted"
-    ],
-    "priority": "high",
-    "author": "john_doe",
-    "assignee": "jane_smith",
-    "createdAt": "2024-01-15T10:30:00Z",
-    "updatedAt": "2024-01-15T10:30:00Z"
-}
-} */
 
-    //onclick="my_modal_5.showModal()"
+
     issues.forEach(element => {
-       
-        // creat a div 
+   
 
         const creatCard = document.createElement('div');
 
 
         creatCard.innerHTML = `
             <section class="bg-[#FFFFFF] shadow-md rounded-md h-full">
-                <article class=" border-t-6 rounded-3xl ${element.priority === 'high' || element.priority === 'medium' ? "border-t-green-500" :"border-t-[#A855F7]"} space-y-4 ">
+                <article class=" border-t-6 rounded-3xl ${element.status === 'open'? "border-t-green-500" :"border-t-[#A855F7]"} space-y-4 ">
 
                     <article class="p-4 space-y-4">
                         <!-- header status and buton -->
                         <div class="flex justify-between">
                             <div>
-                                <img src="./assets/Open-Status.png" alt="">
-                                <img class="hidden" src="./assets/Closed- Status .png" alt="">
+                                ${element.status === 'open' ? `<img src="./assets/Open-Status.png" alt="">`:` <img src="./assets/Closed- Status .png" alt="">`}
+
                             </div>
                             <button onclick="lodedetels(${element.id})"  class="${element.priority === "high" ? "bg-[#EF444470] text-[#EF4444]" : element.priority === "medium" ? "bg-[#FDE68A70] text-[#D97706]": "bg-[#E5E7EB] text-[#374151]"} px-6 rounded-full">${element.priority}</button>
                         </div>
@@ -190,15 +183,22 @@ const displayIssye = (issues) => {
             </section>
         `;
 
-        allCard.append(creatCard)
+        if(element.status === 'open'){
+           openContainer.append(creatCard.cloneNode(true));
+        }
+        else{
+            closedContainer.append(creatCard.cloneNode(true));
+        }
+        allCard.append(creatCard);
+        allstatus.innerText = allCard.children.length;
+
     });
-
-
 }
 
 
 allApi();
 
+                        // search function
 document.getElementById("search-btn").addEventListener("click", () => {
     const input = document.getElementById("input-search");
     const searchValue = input.value.trim().toLowerCase();
