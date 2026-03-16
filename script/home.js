@@ -234,3 +234,4 @@ const search_fun = () => {
             spinner(false);
         });
 };
+search_fun()
