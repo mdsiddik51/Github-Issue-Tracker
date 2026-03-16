@@ -203,10 +203,18 @@ const displayIssye = (issues) => {
 
 allApi();
 
-                        // search function
-document.getElementById("search-btn").addEventListener("click", () => {
+const input = document.getElementById("input-search");
+
+input.addEventListener("input", () => {
+    search_fun();
+});
+
+// search function
+const search_fun = () => {
     const input = document.getElementById("input-search");
     const searchValue = input.value.trim().toLowerCase();
+
+    if (!searchValue) return;
 
     spinner(true);
 
@@ -224,7 +232,5 @@ document.getElementById("search-btn").addEventListener("click", () => {
 
             displayIssye(filteredIssues);
             spinner(false);
-            input.value = "";
         });
-       
-});
+};
